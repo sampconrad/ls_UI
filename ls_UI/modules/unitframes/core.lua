@@ -13,6 +13,7 @@ local unpack = _G.unpack
 -- Mine
 local isInit = false
 local NUM_BOSS_FRAMES = 8
+local NUM_PARTY_FRAMES = 8
 local objects = {}
 local units = {}
 
@@ -162,6 +163,22 @@ function UF:Create(unit)
 					oUF:HandleEventlessUnit(object)
 				end
 			end
+		elseif unit == "party" then
+			local partyHolder = self:CreatePartyHolder()
+
+			for i = 1, NUM_PARTY_FRAMES do
+				local object = oUF:Spawn(unit .. i, name .. i .. "Frame")
+				objects[unit .. i] = object
+
+				object._parent = partyHolder
+				partyHolder._children[i] = object
+
+				if isEventlessUnit(unit .. i) then
+					object.onUpdateFrequency = 0.2
+
+					oUF:HandleEventlessUnit(object)
+				end
+			end
 		else
 			local object = oUF:Spawn(unit, name .. "Frame")
 			object:SetPoint(unpack(C.db.profile.units[unit].point))
@@ -195,6 +212,16 @@ function UF:For(unit, method, ...)
 
 			if method == "Update" then
 				UF:UpdateBossHolder()
+			end
+		elseif unit == "party" then
+			for i = 1, NUM_PARTY_FRAMES do
+				if objects[unit .. i][method] then
+					objects[unit .. i][method](objects[unit .. i], ...)
+				end
+			end
+
+			if method == "Update" then
+				UF:UpdatePartyHolder()
 			end
 		elseif objects[unit] then
 			if objects[unit][method] then
@@ -256,6 +283,8 @@ function UF:Init()
 					UF:CreateFocusTargetFrame(frame)
 				elseif unit:match("^boss%d") then
 					UF:CreateBossFrame(frame)
+				elseif unit:match("^party%d") then
+					UF:CreatePartyFrame(frame)
 				end
 			end)
 			oUF:SetActiveStyle("LS")
@@ -284,6 +313,11 @@ function UF:Init()
 			if PrC.db.profile.units.boss.enabled then
 				UF:Create("boss")
 				UF:For("boss", "Update")
+			end
+
+			if PrC.db.profile.units.party.enabled then
+				UF:Create("party")
+				UF:For("party", "Update")
 			end
 		end)
 

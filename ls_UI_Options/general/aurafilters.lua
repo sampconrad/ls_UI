@@ -30,7 +30,7 @@ local function isDefaultFilter(info)
 	return D.global.aura_filters[info[#info - 1]]
 end
 
-local units = {"player", "target", "focus", "boss"}
+local units = {"player", "target", "focus", "boss", "party"}
 
 local function callback()
 	for _, unit in next, units do

@@ -560,7 +560,7 @@ D.profile = {
 			width = 250,
 			height = 52,
 			mirror_widgets = true,
-			point = {"BOTTOM", "UIParent", "BOTTOM", -286, 198},
+			point = {"TOPLEFT", "UIParent", "TOPLEFT", 30, -40},
 			fade = {
 				enabled = false,
 				combat = false,
@@ -778,7 +778,7 @@ D.profile = {
 			enabled = true,
 			width = 114,
 			height = 28,
-			point = {"BOTTOMRIGHT", "LSPlayerFrame", "BOTTOMLEFT", -12, 0},
+			point = {"TOPLEFT", "LSPlayerFrame", "BOTTOMLEFT", 0, -10},
 			fade = {
 				enabled = false,
 				combat = false,
@@ -976,7 +976,7 @@ D.profile = {
 			width = 250,
 			height = 52,
 			mirror_widgets = false,
-			point = {"BOTTOM", "UIParent", "BOTTOM", 286, 198},
+			point = {"TOPLEFT", "UIParent", "TOPLEFT", 330, -40},
 			fade = {
 				enabled = false,
 				combat = false,
@@ -1209,7 +1209,7 @@ D.profile = {
 			enabled = true,
 			width = 114,
 			height = 28,
-			point = {"BOTTOMLEFT", "LSTargetFrame", "BOTTOMRIGHT", 12, 0},
+			point = {"CENTER", "LSTargetFrame", "RIGHT", 60, 0},
 			fade = {
 				enabled = false,
 				combat = false,
@@ -1667,7 +1667,7 @@ D.profile = {
 			x_growth = "LEFT",
 			y_growth = "DOWN",
 			per_row = 1,
-			point = {"TOPRIGHT", "UIParent", "TOPRIGHT", -82, -268},
+			point = {"TOPRIGHT", "UIParent", "TOPRIGHT", -500, -500},
 			fade = {
 				enabled = false,
 				combat = false,
@@ -1896,6 +1896,244 @@ D.profile = {
 			},
 			custom_texts = {},
 		},
+		party = {
+			enabled = true,
+			width = 200,
+			height = 42,
+			spacing = 50,
+			x_growth = "LEFT",
+			y_growth = "DOWN",
+			per_row = 1,
+			mirror_widgets = true,
+			point = {"TOPLEFT", "UIParent", "TOPLEFT", 30, -150},
+			fade = {
+				enabled = false,
+				combat = false,
+				target = false,
+				health = false,
+				out_delay = 0.75,
+				out_duration = 0.15,
+				in_duration = 0.15,
+				min_alpha = 0.2,
+				max_alpha = 1,
+			},
+			insets = {
+				t_size = 0.25,
+				b_size = 0.25,
+			},
+			health = {
+				enabled = true,
+				color = {
+					class = true,
+					reaction = true,
+				},
+				text = {
+					tag = "[ls:health:cur]",
+					size = 13,
+					h_alignment = "RIGHT",
+					v_alignment = "MIDDLE",
+					point1 = {
+						p = "RIGHT",
+						anchor = "Health",
+						rP = "RIGHT",
+						x = -4,
+						y = 0,
+					},
+				},
+				prediction = {
+					enabled = true,
+				},
+			},
+			power = {
+				enabled = true,
+				text = {
+					tag = "",
+					size = 11,
+					h_alignment = "RIGHT",
+					v_alignment = "MIDDLE",
+					point1 = {
+						p = "RIGHT",
+						anchor = "Power",
+						rP = "RIGHT",
+						x = -4,
+						y = 0,
+					},
+				},
+			},
+			castbar = {
+				enabled = false,
+				latency = false,
+				detached = false,
+				width_override = 0,
+				height = 12,
+				icon = {
+					position = "LEFT", -- "RIGHT", "NONE"
+				},
+				text = {
+					size = 12,
+				},
+				point1 = {
+					p = "TOPRIGHT",
+					anchor = "",
+					detached_anchor = "FRAME",
+					rP = "BOTTOMRIGHT",
+					x = 0,
+					y = -6,
+				},
+			},
+			portrait = {
+				enabled = true,
+				style = "2D", -- "3D", "Class"
+				position = "Left", -- "Right"
+			},
+			name = {
+				size = 13,
+				tag = "[ls:color:difficulty][ls:level:effective][ls:npc:type]|r [ls:name]",
+				h_alignment = "LEFT",
+				v_alignment = "MIDDLE",
+				word_wrap = false,
+				point1 = {
+					p = "LEFT",
+					anchor = "Health",
+					rP = "LEFT",
+					x = 4,
+					y = 0,
+				},
+				point2 = {
+					p = "RIGHT",
+					anchor = "Health.Text",
+					rP = "LEFT",
+					x = -2,
+					y = 0,
+				},
+			},
+			raid_target = {
+				enabled = true,
+				size = 24,
+				point1 = {
+					p = "CENTER",
+					anchor = "",
+					rP = "RIGHT",
+					x = 20,
+					y = 0,
+				},
+			},
+			pvp = {
+				enabled = false,
+			},
+			debuff = {
+				enabled = true,
+				point1 = {
+					p = "TOPLEFT",
+					anchor = "Health",
+					rP = "TOPLEFT",
+					x = 2,
+					y = -2,
+				},
+			},
+			status = {
+				enabled = true,
+			},
+			threat = {
+				enabled = true,
+				feedback_unit = "player",
+			},
+			auras = {
+				enabled = true,
+				rows = 1,
+				per_row = 8,
+				width = 0,
+				height = 0,
+				x_growth = "RIGHT",
+				y_growth = "UP",
+				disable_mouse = false,
+				count = {
+					size = 10,
+					h_alignment = "RIGHT",
+					v_alignment = "TOP",
+				},
+				cooldown = {
+					text = {
+						enabled = true,
+						size = 10,
+						v_alignment = "BOTTOM",
+					},
+				},
+				type = {
+					enabled = true,
+					size = 12,
+					position = "TOPLEFT",
+				},
+				filter = {
+					custom = {
+						["Blacklist"] = true,
+						["M+ Affixes"] = true,
+					},
+					friendly = {
+						buff = {
+							boss = true,
+							tank = true,
+							healer = true,
+							mount = true,
+							selfcast = true,
+							selfcast_permanent = true,
+							player = true,
+							player_permanent = true,
+							misc = false,
+						},
+						debuff = {
+							boss = true,
+							tank = true,
+							healer = true,
+							selfcast = true,
+							selfcast_permanent = true,
+							player = true,
+							player_permanent = true,
+							dispellable = true,
+							misc = false,
+						},
+					},
+					enemy = {
+						buff = {
+							boss = true,
+							tank = true,
+							healer = true,
+							mount = true,
+							selfcast = true,
+							selfcast_permanent = true,
+							player = true,
+							player_permanent = true,
+							dispellable = true,
+							misc = false,
+						},
+						debuff = {
+							boss = true,
+							tank = true,
+							healer = true,
+							selfcast = true,
+							selfcast_permanent = true,
+							player = true,
+							player_permanent = true,
+							misc = false,
+						},
+					},
+				},
+				point1 = {
+					p = "BOTTOMLEFT",
+					anchor = "",
+					rP = "TOPLEFT",
+					x = -1,
+					y = 7,
+				},
+			},
+			border = {
+				color = {
+					class = false,
+					reaction = false,
+				},
+			},
+			custom_texts = {},
+		},
 	},
 	minimap = {
 		scale = 100, -- 100, 125, 150
@@ -1999,7 +2237,7 @@ D.profile = {
 					v_alignment = "MIDDLE",
 				},
 			},
-			point = {"BOTTOM", "UIParent", "BOTTOM", 0, 20},
+			point = {"BOTTOM", "UIParent", "BOTTOM", 0, 56},
 		},
 		bar2 = { -- MultiBarBottomLeft
 			flyout_dir = "UP",
@@ -2050,7 +2288,7 @@ D.profile = {
 					v_alignment = "MIDDLE",
 				},
 			},
-			point = {"BOTTOM", "UIParent", "BOTTOM", 0, 55},
+			point = {"BOTTOM", "UIParent", "BOTTOM", 0, 15},
 		},
 		bar3 = { -- MultiBarBottomRight
 			flyout_dir = "UP",
@@ -2101,7 +2339,7 @@ D.profile = {
 					v_alignment = "MIDDLE",
 				},
 			},
-			point = {"BOTTOM", "UIParent", "BOTTOM", 0, 91},
+			point = {"TOP", "UIParent", "TOP", 0, -4},
 		},
 		bar4 = { -- MultiBarLeft
 			flyout_dir = "LEFT",
@@ -2152,7 +2390,7 @@ D.profile = {
 					v_alignment = "MIDDLE",
 				},
 			},
-			point = {"RIGHT", "UIParent", "RIGHT", -40, 0},
+			point = {"top", "UIParent", "top", 0, -35},
 		},
 		bar5 = { -- MultiBarRight
 			flyout_dir = "LEFT",
@@ -2494,7 +2732,7 @@ D.profile = {
 					v_alignment = "MIDDLE",
 				},
 			},
-			point = {"BOTTOM", "UIParent", "BOTTOM", -94, 250},
+			point = {"BOTTOM", "UIParent", "BOTTOM", -260, 480},
 		},
 		zone = { -- ZoneAbility
 			width = 40,
@@ -2521,7 +2759,7 @@ D.profile = {
 					v_alignment = "MIDDLE",
 				},
 			},
-			point = {"BOTTOM", "UIParent", "BOTTOM", 94, 250},
+			point = {"BOTTOM", "UIParent", "BOTTOM", -260, 480},
 		},
 		vehicle = { -- LeaveVehicle
 			width = 40,
@@ -2685,7 +2923,7 @@ D.profile = {
 				size = 12,
 				position = "TOPLEFT",
 			},
-			point = {"TOPRIGHT", "UIParent", "TOPRIGHT", -250, -4},
+			point = {"TOPRIGHT", "UIParent", "TOPRIGHT", -296, -4},
 		},
 		HARMFUL = {
 			width = 32,
@@ -2716,7 +2954,7 @@ D.profile = {
 				size = 12,
 				position = "TOPLEFT",
 			},
-			point = {"TOPRIGHT", "UIParent", "TOPRIGHT", -250, -114},
+			point = {"TOPRIGHT", "UIParent", "TOPRIGHT", -296, -114},
 		},
 		TOTEM = {
 			num = 4,
@@ -2733,7 +2971,7 @@ D.profile = {
 					v_alignment = "BOTTOM",
 				},
 			},
-			point = {"TOPRIGHT", "UIParent", "TOPRIGHT", -250, -150},
+			point = {"TOPRIGHT", "UIParent", "TOPRIGHT", -296, -150},
 		},
 	},
 	tooltips = {
@@ -2755,7 +2993,7 @@ D.profile = {
 			enhancements = true,
 		},
 		gm = {
-			point = {"TOPRIGHT", "UIParent", "TOPRIGHT", -250, -240},
+			point = {"TOPRIGHT", "UIParent", "TOPRIGHT", -296, -218},
 		},
 		talking_head = {
 			hide = false,
@@ -2856,6 +3094,9 @@ PrD.profile = {
 			enabled = true,
 		},
 		boss = {
+			enabled = true,
+		},
+		party = {
 			enabled = true,
 		},
 	},

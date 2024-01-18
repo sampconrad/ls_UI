@@ -27,6 +27,10 @@ local function isBossFrameDisabled()
 	return not UNITFRAMES:HasBossFrame()
 end
 
+local function isPartyFrameDisabled()
+	return not UNITFRAMES:HasPartyFrame()
+end
+
 local function isOCCEnabled()
 	return E.OMNICC
 end
@@ -353,6 +357,60 @@ local function getUnitFrameOptions(order, unit, name)
 				UNITFRAMES:UpdateBossHolder()
 			end,
 		}
+	elseif unit == "party" then
+		temp.disabled = isPartyFrameDisabled
+		temp.args.castbar = CONFIG:CreateUnitFrameCastbarOptions(34, unit)
+		temp.args.auras = CONFIG:CreateUnitFrameAurasOptions(35, unit)
+		temp.args.custom_texts = CONFIG:CreateUnitFrameCustomTextsOptions(40, unit)
+
+		temp.args.per_row = {
+			order = 10,
+			type = "range",
+			name = L["PER_ROW"],
+			min = 1, max = 5, step = 1,
+			get = function()
+				return C.db.profile.units[unit].per_row
+			end,
+			set = function(_, value)
+				if C.db.profile.units[unit].per_row ~= value then
+					C.db.profile.units[unit].per_row = value
+
+					UNITFRAMES:UpdatePartyHolder()
+				end
+			end,
+		}
+
+		temp.args.spacing = {
+			order = 11,
+			type = "range",
+			name = L["SPACING"],
+			min = 8, max = 64, step = 2,
+			get = function()
+				return C.db.profile.units[unit].spacing
+			end,
+			set = function(_, value)
+				if C.db.profile.units[unit].spacing ~= value then
+					C.db.profile.units[unit].spacing = value
+
+					UNITFRAMES:UpdatePartyHolder()
+				end
+			end,
+		}
+
+		temp.args.growth_dir = {
+			order = 12,
+			type = "select",
+			name = L["GROWTH_DIR"],
+			values = CONFIG.GROWTH_DIRS,
+			get = function()
+				return C.db.profile.units[unit].x_growth .. "_" .. C.db.profile.units[unit].y_growth
+			end,
+			set = function(_, value)
+				C.db.profile.units[unit].x_growth, C.db.profile.units[unit].y_growth = s_split("_", value)
+
+				UNITFRAMES:UpdatePartyHolder()
+			end,
+		}
 	end
 
 	return temp
@@ -423,6 +481,9 @@ function CONFIG:CreateUnitFramesOptions(order)
 
 								UNITFRAMES:Create("focustarget")
 								UNITFRAMES:For("focustarget", "Update")
+							elseif info[#info] == "party" then
+								UNITFRAMES:Create("party")
+								UNITFRAMES:For("party", "Update")
 							else
 								UNITFRAMES:Create("boss")
 								UNITFRAMES:For("boss", "Update")
@@ -452,6 +513,11 @@ function CONFIG:CreateUnitFramesOptions(order)
 						order = 4,
 						type = "toggle",
 						name = L["BOSS"],
+					},
+					party = {
+						order = 5,
+						type = "toggle",
+						name = L["PARTY"],
 					},
 				},
 			}, -- 3
@@ -652,6 +718,7 @@ function CONFIG:CreateUnitFramesOptions(order)
 			focus = getUnitFrameOptions(14, "focus", L["FOCUS_FRAME"]),
 			focustarget = getUnitFrameOptions(15, "focustarget", L["TOF_FRAME"]),
 			boss = getUnitFrameOptions(16, "boss", L["BOSS_FRAMES"]),
+			party = getUnitFrameOptions(16, "party", L["PARTY_FRAMES"]),
 		},
 	}
 

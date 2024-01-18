@@ -144,7 +144,7 @@ function P:Modernize(data, name, key)
 					end
 				end
 
-				for _, unit in next, {"target", "targettarget", "focus", "focustarget", "boss"} do
+				for _, unit in next, {"target", "targettarget", "focus", "focustarget", "boss", "party"} do
 					if data.units[unit] then
 						if data.units[unit].health then
 							if data.units[unit].health.text then
@@ -257,7 +257,7 @@ function P:Modernize(data, name, key)
 					end
 				end
 
-				for _, unit in next, {"target", "targettarget", "focus", "focustarget", "boss"} do
+				for _, unit in next, {"target", "targettarget", "focus", "focustarget", "boss", "party"} do
 					if data.units[unit] then
 						if data.units[unit].auras then
 							if data.units[unit].auras.count then
@@ -311,6 +311,12 @@ function P:Modernize(data, name, key)
 					end
 				end
 
+				if data.units.party then
+					if data.units.party.alt_power then
+						data.units.party.alt_power.change_threshold = nil
+					end
+				end
+
 				if data.units.targettarget then
 					data.units.targettarget.custom_texts = nil
 				end
@@ -360,7 +366,7 @@ function P:Modernize(data, name, key)
 					end
 				end
 
-				for _, unit in next, {"target", "targettarget", "focus", "focustarget", "boss"} do
+				for _, unit in next, {"target", "targettarget", "focus", "focustarget", "boss", "party"} do
 					if data.units[unit] then
 						if data.units[unit].health then
 							data.units[unit].health.change_threshold = nil
@@ -412,7 +418,7 @@ function P:Modernize(data, name, key)
 					end
 				end
 
-				for _, unit in next, {"target", "targettarget", "focus", "focustarget", "boss"} do
+				for _, unit in next, {"target", "targettarget", "focus", "focustarget", "boss", "party"} do
 					if data.units[unit] then
 						if data.units[unit].insets then
 							if data.units[unit].insets.t_size > 0.25 then
@@ -538,7 +544,7 @@ function P:Modernize(data, name, key)
 					end
 				end
 
-				for _, unit in next, {"target", "targettarget", "focus", "focustarget", "boss"} do
+				for _, unit in next, {"target", "targettarget", "focus", "focustarget", "boss", "party"} do
 					if data.units[unit] then
 						if data.units[unit].auras then
 							data.units[unit].auras.width = data.units[unit].auras.size_override
@@ -694,7 +700,7 @@ function P:Modernize(data, name, key)
 					data.units.rect = nil
 				end
 
-				for _, unit in next, {"player", "pet", "target", "targettarget", "focus", "focustarget", "boss"} do
+				for _, unit in next, {"player", "pet", "target", "targettarget", "focus", "focustarget", "boss", "party"} do
 					if data.units[unit] then
 						if data.units[unit].auras then
 							if data.units[unit].auras.type then

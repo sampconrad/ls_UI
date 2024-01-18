@@ -12,8 +12,8 @@ local LibKeyBound = LibStub("LibKeyBound-1.0")
 
 local isInit = false
 
-local BOTTOM_POINT = {"BOTTOM", "UIParent", "BOTTOM", 0, 127}
-local TOP_POINT = {"BOTTOM", "UIParent", "BOTTOM", 0, 155}
+local BOTTOM_POINT = {"BOTTOM", "UIParent", "BOTTOM", -177, 105}
+local TOP_POINT = {"BOTTOM", "UIParent", "BOTTOM", -177, 105}
 
 local LAYOUT = {
 	["DEATHKNIGHT"] = TOP_POINT,

@@ -60,26 +60,26 @@ local ACTION_BARS = {
 		type = "MULTIACTIONBAR4BUTTON",
 		page = 4,
 	},
-	["bar5"] = {
-		name = "LSActionBar5",
-		type = "MULTIACTIONBAR3BUTTON",
-		page = 3,
-	},
-	["bar6"] = {
-		name = "LSActionBar6",
-		type = "MULTIACTIONBAR5BUTTON",
-		page = 13,
-	},
-	["bar7"] = {
-		name = "LSActionBar7",
-		type = "MULTIACTIONBAR6BUTTON",
-		page = 14,
-	},
-	["bar8"] = {
-		name = "LSActionBar8",
-		type = "MULTIACTIONBAR7BUTTON",
-		page = 15,
-	},
+	-- ["bar5"] = {
+	-- 	name = "LSActionBar5",
+	-- 	type = "MULTIACTIONBAR3BUTTON",
+	-- 	page = 3,
+	-- },
+	-- ["bar6"] = {
+	-- 	name = "LSActionBar6",
+	-- 	type = "MULTIACTIONBAR5BUTTON",
+	-- 	page = 13,
+	-- },
+	-- ["bar7"] = {
+	-- 	name = "LSActionBar7",
+	-- 	type = "MULTIACTIONBAR6BUTTON",
+	-- 	page = 14,
+	-- },
+	-- ["bar8"] = {
+	-- 	name = "LSActionBar8",
+	-- 	type = "MULTIACTIONBAR7BUTTON",
+	-- 	page = 15,
+	-- },
 }
 
 local PAGE_STATES = {
