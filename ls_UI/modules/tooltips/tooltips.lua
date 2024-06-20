@@ -52,8 +52,7 @@ local function INSPECT_READY(unitGUID)
 		inspectGUIDCache[unitGUID].itemLevel = E:GetUnitAverageItemLevel("mouseover")
 
 		if inspectGUIDCache[unitGUID].itemLevel then
-			GameTooltip:ClearLines()
-			GameTooltip:SetUnit("mouseover")
+			GameTooltip:RefreshData()
 		else
 			inspectGUIDCache[unitGUID].time = nil
 			inspectGUIDCache[unitGUID].itemLevel = nil
@@ -138,13 +137,13 @@ function MODULE:Init()
 			if id then
 				local textRight
 				if C.db.profile.tooltips.count then
-					textRight = TOTAL:format(GetItemCount(id, true))
+					textRight = TOTAL:format(C_Item.GetItemCount(id, true))
 				end
 
 				tooltip:AddLine(" ")
 				tooltip:AddDoubleLine(ID:format(id), textRight or "", 1, 1, 1, 1, 1, 1)
 
-				local _, _, _, _, _, _, _, _, _, _, _, _, _, _, expacID = GetItemInfo(id)
+				local _, _, _, _, _, _, _, _, _, _, _, _, _, _, expacID = C_Item.GetItemInfo(id)
 				if expacID and expacID > 0 then
 					tooltip:AddLine(EXPANSION:format(_G["EXPANSION_NAME" .. expacID]), 1, 1, 1)
 				end
@@ -294,7 +293,11 @@ function MODULE:Init()
 
 			if UnitIsPlayer(unit) then
 				local name, realm = UnitName(unit)
-				name = C.db.profile.tooltips.title and UnitPVPName(unit) or name
+				local pvpName = UnitPVPName(unit)
+
+				if C.db.profile.tooltips.title and pvpName ~= "" then
+					name = pvpName
+				end
 
 				if realm and realm ~= "" then
 					if isShiftKeyDown then
@@ -496,9 +499,10 @@ function MODULE:Init()
 		end)
 
 		E:RegisterEvent("MODIFIER_STATE_CHANGED", function(key)
+			if GameTooltip:IsForbidden() then return end
+
 			if UnitExists("mouseover") and (key == "LSHIFT" or key == "RSHIFT") then
-				GameTooltip:ClearLines()
-				GameTooltip:SetUnit("mouseover")
+				GameTooltip:RefreshData()
 			end
 		end)
 

@@ -96,7 +96,6 @@ L["TARGET"] = _G.TARGET
 L["TOTAL"] = _G.TOTAL
 L["UNIT_FRAME"] = _G.UNITFRAME_LABEL
 L["UNKNOWN"] = _G.UNKNOWN
-L["WORLD_BOSS"] = _G.RAID_INFO_WORLD_BOSS
 L["ZONE"] = _G.ZONE
 
 -- Require translation
@@ -453,6 +452,7 @@ L["SPACING"] = "Spacing"
 L["SPELL_CAST"] = "Cast"
 L["SPELL_CHANNELED"] = "Channelled"
 L["SPELL_EMPOWERED"] = "Empowered"
+L["SPELL_EMPOWERED_FULL"] = "Empowered (Full)"
 L["SPELL_FAILED"] = "Failed"
 L["SPELL_UNINTERRUPTIBLE"] = "Uninterruptible"
 L["STAGGER_HIGH"] = "High Stagger"
