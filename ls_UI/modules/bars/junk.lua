@@ -83,7 +83,7 @@ function MODULE:CleanUp()
 
 	QueueStatusButton:SetParent(UIParent)
 	QueueStatusButton:ClearAllPoints()
-	QueueStatusButton:SetPoint("BOTTOMRIGHT", "UIParent", "BOTTOMRIGHT", -228, 4)
+	QueueStatusButton:SetPoint("BOTTOMRIGHT", "MinimapCluster", "BOTTOMLEFT", -10, -2)
 	E.Movers:Create(QueueStatusButton)
 
 	FramerateFrame:ClearAllPoints()

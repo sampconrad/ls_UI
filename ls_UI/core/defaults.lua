@@ -561,7 +561,7 @@ D.profile = {
 			width = 250,
 			height = 52,
 			mirror_widgets = true,
-			point = {"TOPLEFT", "UIParent", "TOPLEFT", 30, -40},
+			point = {"TOPLEFT", "UIParent", "TOPLEFT", 40, -40},
 			fade = {
 				enabled = false,
 				combat = false,
@@ -977,7 +977,7 @@ D.profile = {
 			width = 250,
 			height = 52,
 			mirror_widgets = false,
-			point = {"TOPLEFT", "UIParent", "TOPLEFT", 330, -40},
+			point = {"TOPLEFT", "UIParent", "TOPLEFT", 340, -40},
 			fade = {
 				enabled = false,
 				combat = false,
@@ -1321,7 +1321,7 @@ D.profile = {
 			width = 250,
 			height = 52,
 			mirror_widgets = false,
-			point = {"BOTTOM", "UIParent", "BOTTOM", 286, 418},
+			point = {"TOPLEFT", "UIParent", "TOPLEFT", 800, -450},
 			fade = {
 				enabled = false,
 				combat = false,
@@ -1668,7 +1668,7 @@ D.profile = {
 			x_growth = "LEFT",
 			y_growth = "DOWN",
 			per_row = 1,
-			point = {"TOPRIGHT", "UIParent", "TOPRIGHT", -500, -500},
+			point = {"BOTTOMRIGHT", "UIParent", "BOTTOMRIGHT", -715, 160},
 			fade = {
 				enabled = false,
 				combat = false,
@@ -1906,7 +1906,7 @@ D.profile = {
 			y_growth = "DOWN",
 			per_row = 1,
 			mirror_widgets = true,
-			point = {"TOPLEFT", "UIParent", "TOPLEFT", 30, -150},
+			point = {"TOPLEFT", "UIParent", "TOPLEFT", 40, -150},
 			fade = {
 				enabled = false,
 				combat = false,
@@ -2165,7 +2165,7 @@ D.profile = {
 			min_alpha = 0.2,
 			max_alpha = 1,
 		},
-		point = {"TOPRIGHT", "UIParent", "TOPRIGHT", -4, -4},
+		point = {"TOPRIGHT", "UIParent", "TOPRIGHT", -40, -40},
 	},
 	bars = {
 		mana_indicator = "button", -- hotkey
@@ -2238,7 +2238,7 @@ D.profile = {
 					v_alignment = "MIDDLE",
 				},
 			},
-			point = {"BOTTOM", "UIParent", "BOTTOM", 0, 56},
+			point = {"BOTTOM", "UIParent", "BOTTOM", 0, 98},
 		},
 		bar2 = { -- MultiBarBottomLeft
 			flyout_dir = "UP",
@@ -2289,7 +2289,7 @@ D.profile = {
 					v_alignment = "MIDDLE",
 				},
 			},
-			point = {"BOTTOM", "UIParent", "BOTTOM", 0, 15},
+			point = {"BOTTOM", "UIParent", "BOTTOM", 0, 55},
 		},
 		bar3 = { -- MultiBarBottomRight
 			flyout_dir = "UP",
@@ -2634,6 +2634,7 @@ D.profile = {
 					v_alignment = "MIDDLE",
 				},
 			},
+			point = {"BOTTOM", "UIParent", "BOTTOM", 0, 150},
 		},
 		stance = {
 			flyout_dir = "UP",
@@ -2671,6 +2672,7 @@ D.profile = {
 					v_alignment = "MIDDLE",
 				},
 			},
+			point = {"BOTTOM", "UIParent", "BOTTOM", -184, 150},
 		},
 		pet_battle = {
 			num = 6,
@@ -2733,7 +2735,7 @@ D.profile = {
 					v_alignment = "MIDDLE",
 				},
 			},
-			point = {"BOTTOM", "UIParent", "BOTTOM", -260, 480},
+			point = {"BOTTOM", "UIParent", "BOTTOM", 320, 476},
 		},
 		zone = { -- ZoneAbility
 			width = 40,
@@ -2777,7 +2779,7 @@ D.profile = {
 				min_alpha = 0.2,
 				max_alpha = 1,
 			},
-			point = {"BOTTOM", "UIParent", "BOTTOM", 168, 134},
+			point = {"BOTTOM", "UIParent", "BOTTOM", 320, 165},
 		},
 		bag = {
 			visible = true,
@@ -2794,7 +2796,7 @@ D.profile = {
 				min_alpha = 0.2,
 				max_alpha = 1,
 			},
-			point = {"BOTTOMRIGHT", "UIParent", "BOTTOMRIGHT", -4, 36},
+			point = {"BOTTOMRIGHT", "UIParent", "BOTTOMRIGHT", -40, 86},
 		},
 		micromenu = {
 			visible = true,
@@ -2860,7 +2862,7 @@ D.profile = {
 					enabled = false,
 				},
 			},
-			point = {"BOTTOMRIGHT", "UIParent", "BOTTOMRIGHT", -4, 4},
+			point = {"BOTTOMRIGHT", "UIParent", "BOTTOMRIGHT", -40, 40},
 		},
 		xpbar = {
 			visible = true,
@@ -2882,7 +2884,7 @@ D.profile = {
 				min_alpha = 0.2,
 				max_alpha = 1,
 			},
-			point = {"BOTTOM", "UIParent", "BOTTOM", 0, 4},
+			point = {"BOTTOM", "UIParent", "BOTTOM", 0, 40},
 		},
 	},
 	auras = {
@@ -2924,7 +2926,7 @@ D.profile = {
 				size = 12,
 				position = "TOPLEFT",
 			},
-			point = {"TOPRIGHT", "UIParent", "TOPRIGHT", -296, -4},
+			point = {"TOPRIGHT", "MinimapCluster", "TOPLEFT", -10, 0},
 		},
 		HARMFUL = {
 			width = 32,
@@ -2955,7 +2957,7 @@ D.profile = {
 				size = 12,
 				position = "TOPLEFT",
 			},
-			point = {"TOPRIGHT", "UIParent", "TOPRIGHT", -296, -114},
+			point = {"TOPRIGHT", "MinimapCluster", "TOPLEFT", -10, -79},
 		},
 		TOTEM = {
 			num = 4,
@@ -2972,7 +2974,7 @@ D.profile = {
 					v_alignment = "BOTTOM",
 				},
 			},
-			point = {"TOPRIGHT", "UIParent", "TOPRIGHT", -296, -150},
+			point = {"TOPRIGHT", "MinimapCluster", "TOPLEFT", -10, -121},
 		},
 	},
 	tooltips = {
@@ -2994,7 +2996,7 @@ D.profile = {
 			enhancements = true,
 		},
 		gm = {
-			point = {"TOPRIGHT", "UIParent", "TOPRIGHT", -296, -218},
+			point = {"BOTTOMRIGHT", "MinimapCluster", "BOTTOMLEFT", -9, 51},
 		},
 		talking_head = {
 			hide = false,
