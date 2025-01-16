@@ -1984,6 +1984,7 @@ D.profile = {
 					size = 13,
 					h_alignment = "RIGHT",
 					v_alignment = "MIDDLE",
+					word_wrap = false,
 					point1 = {
 						p = "RIGHT",
 						anchor = "Health",
@@ -1995,6 +1996,9 @@ D.profile = {
 				prediction = {
 					enabled = true,
 				},
+				reduction = {
+					enabled = false,
+				},
 			},
 			power = {
 				enabled = true,
@@ -2003,6 +2007,7 @@ D.profile = {
 					size = 11,
 					h_alignment = "RIGHT",
 					v_alignment = "MIDDLE",
+					word_wrap = false,
 					point1 = {
 						p = "RIGHT",
 						anchor = "Power",
@@ -2037,6 +2042,7 @@ D.profile = {
 				enabled = true,
 				style = "2D", -- "3D", "Class"
 				position = "Left", -- "Right"
+				scale = 1.35,
 			},
 			name = {
 				size = 13,
