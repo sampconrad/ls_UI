@@ -4,8 +4,14 @@ local UF = P:GetModule("UnitFrames")
 
 -- Lua
 local _G = getfenv(0)
+local hooksecurefunc = _G.hooksecurefunc
 
 -- Mine
+local function updateAlpha(self, alpha)
+	self.Portrait3D.alpha = alpha
+	self.Portrait3D:SetModelAlpha(alpha)
+end
+
 local element_proto = {}
 
 function element_proto:UpdateConfig()
@@ -16,6 +22,7 @@ end
 function element_proto:PostUpdate(_, hasStateChanged)
 	if self:IsObjectType("PlayerModel") and hasStateChanged then
 		self:SetCamDistanceScale(1 / self._config.scale)
+		self:SetModelAlpha(self.alpha)
 	end
 end
 
@@ -70,6 +77,8 @@ function UF:CreatePortrait(frame, parent)
 
 	frame.Portrait2D = Mixin((parent or frame):CreateTexture(nil, "ARTWORK"), element_proto)
 	frame.Portrait3D = Mixin(CreateFrame("PlayerModel", nil, parent or frame), element_proto)
+
+	hooksecurefunc(frame, "SetAlpha", updateAlpha)
 
 	return frame.Portrait2D
 end

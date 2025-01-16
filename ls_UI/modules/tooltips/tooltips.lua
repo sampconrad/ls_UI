@@ -25,6 +25,7 @@ local ILVL_SPEC_FORMAT = "|cffffd100%s|r %s"
 local PLAYER_TARGET_FORMAT = "%s (|c%s" .. _G.PLAYER .. "|r)"
 local TARGET = "|cffffd100" .. _G.TARGET .. _G.HEADER_COLON .. "|r %s"
 local TOTAL = "|cffffd100" .. _G.TOTAL .. _G.HEADER_COLON .. "|r %d"
+local TOTAL_DETAILED = TOTAL .. " |cff888987(%d + %d)|r"
 
 local PHASE_ICONS = {
 	[Enum.PhaseReason.Phasing] = M.textures.icons_inline.PHASE,
@@ -115,7 +116,14 @@ function MODULE:Init()
 			if id then
 				local textRight
 				if C.db.profile.tooltips.count then
-					textRight = TOTAL:format(C_Item.GetItemCount(id, true))
+					local inBags = C_Item.GetItemCount(id)
+					local total = C_Item.GetItemCount(id, true, false, true, true)
+					local inBanks = total - inBags
+					if inBanks > 0 then
+						textRight = TOTAL_DETAILED:format(total, inBags, inBanks)
+					else
+						textRight = TOTAL:format(total)
+					end
 				end
 
 				tooltip:AddLine(" ")
@@ -240,6 +248,7 @@ function MODULE:Init()
 			[_G.FACTION_ALLIANCE] = true,
 			[_G.FACTION_HORDE] = true,
 			[_G.PVP] = true,
+			[_G.UNIT_POPUP_RIGHT_CLICK] = true,
 		}
 
 		TooltipDataProcessor.AddLinePreCall(Enum.TooltipDataLineType.None, function(tooltip, lineData)
@@ -257,6 +266,13 @@ function MODULE:Init()
 			if creatureType then
 				return lineData.leftText == creatureType
 			end
+		end)
+
+		TooltipDataProcessor.AddLinePreCall(Enum.TooltipDataLineType.Blank, function(tooltip)
+			if not GOOD_TOOLTIPS[tooltip] or tooltip:IsForbidden() then return end
+			if not tooltip:IsTooltipType(Enum.TooltipDataType.Unit) then return end
+
+			return true
 		end)
 
 		TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, function(tooltip)
@@ -505,6 +521,12 @@ function MODULE:Init()
 			if UnitExists("mouseover") and (key == "LSHIFT" or key == "RSHIFT") then
 				GameTooltip:RefreshData()
 			end
+		end)
+
+		E:RegisterEvent("UPDATE_MOUSEOVER_UNIT", function()
+			if GameTooltip:IsForbidden() then return end
+
+			GameTooltip:RefreshData()
 		end)
 
 		isInit = true

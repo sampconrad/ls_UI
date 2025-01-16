@@ -1,5 +1,54 @@
 # CHANGELOG
 
+## Version 110005.02
+
+- Fixed an issue where movers would fail to initialise properly if they're a part of a convoluted hierarchy.
+
+### Blizzard
+
+- Updated character and inspect panels. Added optional upgrade level (hero, champion, etc) texts, disabled by default.
+  Gems and sockets are now displayed via Remix-like widgets. Enchant and upgrade level texts are now shown on mouseover
+  to reduce the visual clutter.
+
+### Unit Frames
+
+- Fixed an issue where a 3D portrait wouldn't inherit the unit frame's alpha.
+
+![Imgur](https://i.imgur.com/MsWHQn3.png)
+
+## Version 110005.01
+
+- Added 11.0.5 support.
+
+### Action Bars
+
+- Fixed an issue where the guild emblem would appear on top the guild micro button.
+
+### Blizzard
+
+- Added custom inspect panel. Can be found at /LSUI > Blizzard > Inspect Frame, enabled by default.
+
+### Unit Frames
+
+- Fixed an issue where 3D portrait wouldn't fade properly.
+
+## Version 110000.03
+
+### Action Bars
+
+- Fixed an issue where droids wouldn't get the skyriding bar in the flying form.
+
+## Version 110000.02
+
+### Blizzard
+
+- Added an option to scale the game menu. Can be found at /LSUI > Blizzard > Game Menu.
+
+### Tooltips
+
+- Added the bag vs bank (bank + reagent bank + warbank) details to the total item count. It'll only be shown if you have
+  that item in your banks.
+
 ## Version 110000.01
 
 - Added 11.0.0 support.
